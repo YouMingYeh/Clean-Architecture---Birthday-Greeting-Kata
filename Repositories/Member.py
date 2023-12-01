@@ -1,9 +1,11 @@
 # 3. Define Repository: Member Repository
-from Entity.Entities import Member
+from Entities import Member
 from typing import List
 from datetime import date
+from abc import ABC, abstractmethod
 
-class MemberRepository:
+class MemberRepository(ABC):
+    @abstractmethod
     def __init__(self):
         pass;
 
