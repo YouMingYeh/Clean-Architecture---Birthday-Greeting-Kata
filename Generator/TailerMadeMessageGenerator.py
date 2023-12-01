@@ -1,8 +1,8 @@
 from Entities import Greeting, Member
 from typing import List
-from UseCase.GreetingMessageGenerator import GreetingMessageGenerator
+from Generator import GreetingMessageGeneratorAbs
 
-class TailerMadeMessageGenerator(GreetingMessageGenerator):
+class TailerMadeMessageGenerator(GreetingMessageGeneratorAbs):
     def __init__(self, discount_for_male: int, items_for_male: List[str], discount_for_female: int, items_for_female: List[str]):
         self.discount_for_male = discount_for_male
         self.items_for_male = items_for_male

@@ -1,9 +1,9 @@
 from Entities import Greeting, Member
 from Repositories.Member import MemberRepository
-from UseCase.GreetingMessageGenerator import GreetingMessageGenerator
+from Generator import GreetingMessageGeneratorAbs
 
 class BirthdayService:
-    def __init__(self, repo: MemberRepository, generator: GreetingMessageGenerator):
+    def __init__(self, repo: MemberRepository, generator: GreetingMessageGeneratorAbs):
         self.repo = repo
         self.generator = generator
 
