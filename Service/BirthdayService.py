@@ -7,7 +7,13 @@ class BirthdayService:
         self.repo = repo
         self.generator = generator
 
-    def send_greetings(self) -> Greeting:
+    def send_greetings(self, format: str) -> str:
         member = self.repo.get_members_with_tody_birthday()
         greeting = self.generator.generate(member)
-        return greeting
+
+        if format == "JSON":
+            return greeting.to_json()
+        elif format == "XML":
+            return greeting.to_xml()
+        else:
+            raise ValueError("Invalid format specified.")
