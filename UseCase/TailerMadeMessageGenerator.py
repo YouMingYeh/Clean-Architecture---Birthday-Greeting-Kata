@@ -10,8 +10,8 @@ class TailerMadeMessageGenerator(GreetingMessageGenerator):
         self.items_for_female = items_for_female
 
     def generate(self, member: Member) -> Greeting:
-        title = 'Subject: Happy Birthday!'
-        content = f'Happy birthday, dear {member.first_name}!'
+        title = 'Subject: Happy Birthday!\n'
+        content = f'Happy birthday, dear {member.first_name}!\n'
         if member.gender == "Male":
             content += f'We offer special discount {self.discount_for_male}% off for the following items:\n'
             content += '\n'.join(self.items_for_male)
