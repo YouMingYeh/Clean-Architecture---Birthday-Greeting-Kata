@@ -1,6 +1,6 @@
 from Entities import Greeting, Member
 from typing import List
-from Generator import GreetingMessageGeneratorAbs
+from Generators import GreetingMessageGeneratorAbs
 
 class ElderPictureMessageGenerator(GreetingMessageGeneratorAbs):
     def __init__(self, picture_path: str):
