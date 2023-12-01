@@ -1,4 +1,3 @@
-# 3. Define Repository: Member Repository
 from Entities import Member
 from typing import List
 from datetime import date
