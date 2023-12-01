@@ -6,3 +6,9 @@ class Member:
         self.gender = gender
         self.date_of_birth = date_of_birth
         self.email = email
+
+# 2. Define Greeting entity
+class Greeting:
+    def __init__(self, title, content):
+        self.title = title
+        self.content = content
