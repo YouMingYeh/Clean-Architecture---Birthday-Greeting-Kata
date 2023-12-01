@@ -1,6 +1,6 @@
 from Entities import Greeting, Member
 from typing import List
-from Generators import GreetingMessageGeneratorAbs
+from .GreetingMessageGeneratorAbs import GreetingMessageGeneratorAbs
 
 class TailerMadeMessageGenerator(GreetingMessageGeneratorAbs):
     def __init__(self, discount_for_male: int, items_for_male: List[str], discount_for_female: int, items_for_female: List[str]):

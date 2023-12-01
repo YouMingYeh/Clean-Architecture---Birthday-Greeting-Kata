@@ -1,6 +1,7 @@
 from Entities import Greeting, Member
 from typing import List
-from Generators import GreetingMessageGeneratorAbs
+from .GreetingMessageGeneratorAbs import GreetingMessageGeneratorAbs
+from datetime import date
 
 class ElderPictureMessageGenerator(GreetingMessageGeneratorAbs):
     def __init__(self, picture_path: str):
@@ -9,7 +10,7 @@ class ElderPictureMessageGenerator(GreetingMessageGeneratorAbs):
     def generate(self, member: Member) -> Greeting:
         title = 'Subject: Happy Birthday!\n'
         content = f'Happy birthday, dear {member.first_name}!\n'
-        if member.age >= 49:
-            content += self.picture_path
+        if date.today().year - member.date_of_birth.year >= 50:
+            content += f'{self.picture_path}'
         return Greeting(title, content)
         
