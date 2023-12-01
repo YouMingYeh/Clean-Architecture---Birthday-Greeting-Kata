@@ -1,1 +1,3 @@
 dicttoxml
+pymongo[srv]
+python-dotenv
