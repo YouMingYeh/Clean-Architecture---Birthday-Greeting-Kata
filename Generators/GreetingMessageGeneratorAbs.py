@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from Entities import Greeting, Member
 
 # Create Greeting Generator Abstraction
-class GreetingMessageGenerator(ABC):
+class GreetingMessageGeneratorAbs(ABC):
     @abstractmethod
     def __init__(self):
        pass

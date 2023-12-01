@@ -1,5 +1,5 @@
 from Entities import Greeting, Member
-from Generators import GreetingMessageGeneratorAbs 
+from .GreetingMessageGeneratorAbs import GreetingMessageGeneratorAbs
 
 class SimpleMessageGenerator(GreetingMessageGeneratorAbs):
     def __init__(self):
