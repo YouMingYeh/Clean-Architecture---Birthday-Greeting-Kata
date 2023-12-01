@@ -1,11 +1,11 @@
 from Entities import Greeting, Member
-from Generator import GreetingMessageGeneratorAbs 
+from Generators import GreetingMessageGeneratorAbs
 
-class SimpleMessageGenerator(GreetingMessageGeneratorAbs):
+class SimepleMessageWithFullNameGenerator(GreetingMessageGeneratorAbs):
     def __init__(self):
         pass
 
     def generate(self, member: Member) -> Greeting:
         title = 'Subject: Happy Birthday!\n'
-        content = f'Happy birthday, dear {member.first_name}!\n'
+        content = f'Happy birthday, dear {member.last_name}, {member.first_name}!\n'
         return Greeting(title, content)
