@@ -1,3 +1,4 @@
 dicttoxml
 pymongo[srv]
 python-dotenv
+mysql-connector-python
