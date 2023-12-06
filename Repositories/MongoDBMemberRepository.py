@@ -9,8 +9,6 @@ import os
 
 class MongoDBMemberRepository(MemberRepository):
     def __init__(self):
-        # TODO: Implement connection to MongoDB Server
-        self.today_date = date.today()
         load_dotenv()
         self.client = MongoClient(os.getenv("MONGO_URI"))
         self.db = self.client["CA"]
@@ -82,8 +80,8 @@ class MongoDBMemberRepository(MemberRepository):
         ]
         return members
 
-    def get_members_with_tody_birthday(self):
-        today = self.today_date.strftime("%m-%d")
+    def get_members_with_tody_birthday(self, today_date: date = date.today()):
+        today = today_date.strftime("%m-%d")
         members = self.collection.find({"date_to_birth": today})
         members = [
             Member(

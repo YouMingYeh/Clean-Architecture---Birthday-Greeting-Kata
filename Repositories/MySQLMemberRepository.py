@@ -11,7 +11,6 @@ from Entities import Member
 
 class MySQLMemberRepository(MemberRepository):
     def __init__(self):
-        self.today_date = date.today()
         load_dotenv()
         self.db = mysql.connector.connect(
             host=os.getenv("MYSQL_HOST"),
@@ -62,7 +61,6 @@ class MySQLMemberRepository(MemberRepository):
         self.db.commit()
 
     def add(self, member: Member):
-        # TODO: Implement MySQL Insert
 
         pass
 
@@ -80,11 +78,10 @@ class MySQLMemberRepository(MemberRepository):
             members.append(member)
         return members
 
-    def get_members_with_tody_birthday(self):
-        today = date.today()
+    def get_members_with_tody_birthday(self, today_date: date = date.today()):
         self.cursor.execute(
             "SELECT * FROM members WHERE MONTH(date_of_birth) = %s AND DAY(date_of_birth) = %s",
-            (today.month, today.day),
+            (today_date.month, today_date.day),
         )
         members = []
         for row in self.cursor.fetchall():
