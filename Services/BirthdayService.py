@@ -5,15 +5,25 @@ from Generators import GreetingMessageGeneratorAbs
 class BirthdayService:
     def __init__(self, repo: MemberRepository, generator: GreetingMessageGeneratorAbs):
         self.repo = repo
+        self.repo.init_table()
         self.generator = generator
 
-    def send_greetings(self, format: str) -> str:
-        member = self.repo.get_members_with_tody_birthday()
-        greeting = self.generator.generate(member)
+    def send_greetings(self, format: str):
+        members = self.repo.get_members_with_tody_birthday()
+        greetings = []
+        for member in members:
+            greeting = self.generator.generate(member)
+            greetings.append(greeting)
 
         if format == "JSON":
-            return greeting.to_json()
+            for greeting in greetings:
+                greeting.to_json()
         elif format == "XML":
-            return greeting.to_xml()
+            for greeting in greetings:
+                greeting.to_xml()
         else:
             raise ValueError("Invalid format specified.")
+        
+        # parse the greetings(Greeting[]) to JSON or XML
+        
+        return greetings
