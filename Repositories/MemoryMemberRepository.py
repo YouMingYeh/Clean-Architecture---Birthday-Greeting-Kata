@@ -5,7 +5,7 @@ from Repositories.Member import MemberRepository
 
 
 class MemoryMemberRepository(MemberRepository):
-    def __init__(self, today_date: date = date.today()):
+    def __init__(self):
         self.members = [
             Member(
                 first_name="Robert",

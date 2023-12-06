@@ -18,7 +18,7 @@ def greetings_v2():
     output_type = request.args.get('format', default='JSON')
     db_type = request.args.get('db', default='memory')
     generator = SimpleMessageWithFullNameGenerator()
-    repo = get_repo(db_type)
+    repo = get_repo()
     service = BirthdayService(repo, generator)
     greeting = service.send_greetings(output_type)
     return greeting

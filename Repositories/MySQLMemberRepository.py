@@ -94,3 +94,5 @@ class MySQLMemberRepository(MemberRepository):
             )
             members.append(member)
         return members
+    def __del__(self):
+        self.drop_table()
