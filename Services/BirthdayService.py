@@ -1,6 +1,7 @@
-from Entities import Greeting, Member
+
 from Repositories.Member import MemberRepository
 from Generators import GreetingMessageGeneratorAbs
+from datetime import date
 
 class BirthdayService:
     def __init__(self, repo: MemberRepository, generator: GreetingMessageGeneratorAbs):
@@ -8,21 +9,21 @@ class BirthdayService:
         self.repo.init_table()
         self.generator = generator
 
-    def send_greetings(self, format: str):
-        members = self.repo.get_members_with_tody_birthday()
+    def send_greetings(self, today_date: date = date.today(), format: str = "JSON"):
+        members = self.repo.get_members_with_tody_birthday(today_date)
         greetings = []
         for member in members:
             greeting = self.generator.generate(member)
-            greetings.append(greeting)
+            
 
-        if format == "JSON":
-            for greeting in greetings:
-                greeting.to_json()
-        elif format == "XML":
-            for greeting in greetings:
-                greeting.to_xml()
-        else:
-            raise ValueError("Invalid format specified.")
+            if format == "JSON":
+                greeting = greeting.to_json()
+                greetings.append(greeting)
+            elif format == "XML":
+                greeting = greeting.to_xml()
+                greetings.append(greeting)
+            else:
+                raise ValueError("Invalid format specified.")
         
         # parse the greetings(Greeting[]) to JSON or XML
         

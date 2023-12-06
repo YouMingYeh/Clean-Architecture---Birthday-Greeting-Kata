@@ -8,11 +8,14 @@ class MemberRepository(ABC):
     def __init__(self):
         pass
 
+    def init_table(self):
+        pass
+
     def add(self, member: Member):
         pass
 
     def get_all(self):
         pass
     
-    def get_members_with_tody_birthday(self):
+    def get_members_with_tody_birthday(self, today_date: date):
         pass

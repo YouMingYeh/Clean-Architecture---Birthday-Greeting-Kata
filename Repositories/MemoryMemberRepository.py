@@ -5,7 +5,7 @@ from Repositories.Member import MemberRepository
 
 
 class MemoryMemberRepository(MemberRepository):
-    def __init__(self):
+    def __init__(self, today_date: date = date.today()):
         self.members = [
             Member(
                 first_name="Robert",
@@ -43,7 +43,8 @@ class MemoryMemberRepository(MemberRepository):
                 email="peter.wang@linecorp.com",
             ),
         ]
-        self.today_date = date.today()
+    def init_table(self):
+        pass
 
     def add(self, member: Member):
         self.members.append(member)
@@ -51,10 +52,10 @@ class MemoryMemberRepository(MemberRepository):
     def get_all(self):
         return self.members
 
-    def get_members_with_tody_birthday(self):
+    def get_members_with_tody_birthday(self, today_date: date = date.today()):
         return [
             member
             for member in self.members
-            if member.date_of_birth.day == self.today_date.day
-            and member.date_of_birth.month == self.today_date.month
+            if member.date_of_birth.day == today_date.day
+            and member.date_of_birth.month == today_date.month
         ]
