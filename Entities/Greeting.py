@@ -10,4 +10,9 @@ class Greeting:
         return json.dumps(self.__dict__)
 
     def to_xml(self):
-        return dicttoxml(self.__dict__).decode()
+        xml_string = dicttoxml(self.__dict__).decode()
+
+        # Remove the XML declaration
+        xml_string_without_declaration = xml_string.split('<?xml version="1.0" encoding="UTF-8" ?>')[1].strip()
+
+        return xml_string_without_declaration

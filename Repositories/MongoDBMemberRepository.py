@@ -63,6 +63,7 @@ class MongoDBMemberRepository(MemberRepository):
             member_dict["date_of_birth"] = datetime.combine(member_dict["date_of_birth"], datetime.min.time())
         self.collection.insert_many(members_dict)
 
+
     def drop_table(self):
         self.collection.drop()
 
@@ -80,10 +81,13 @@ class MongoDBMemberRepository(MemberRepository):
         ]
         return members
 
-    def get_members_with_tody_birthday(self, today_date: date = date.today()):
-        today = today_date.strftime("%m-%d")
-        members = self.collection.find({"date_to_birth": today})
-        members = [
+    def get_members_with_tody_birthday(self, today_date: date = date.today()) -> List[Member]:
+        month_day = f"{today_date.month:02d}-{today_date.day:02d}"
+
+        members = self.collection.find({ "$expr": {"$eq": [month_day, { "$dateToString": {"date": "$date_of_birth", "format": "%m-%d"}}]}})
+
+
+        members_list = [
             Member(
                 first_name=member['first_name'],
                 last_name=member['last_name'],
@@ -93,4 +97,8 @@ class MongoDBMemberRepository(MemberRepository):
             )
             for member in members
         ]
-        return members
+        return members_list
+
+    def __del__(self):
+        self.drop_table()
+    
