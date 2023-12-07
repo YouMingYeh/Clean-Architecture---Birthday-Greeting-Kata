@@ -14,8 +14,8 @@ class MemberRepository(ABC):
     def add(self, member: Member):
         pass
 
-    def get_all(self):
+    def get_all(self) -> List[Member]:
         pass
     
-    def get_members_with_tody_birthday(self, today_date: date):
+    def get_members_with_tody_birthday(self, today_date: date)-> List[Member]:
         pass

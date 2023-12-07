@@ -22,9 +22,10 @@ class TestBirthdayService(unittest.TestCase):
                 json.loads(message)  # Try to parse the string as JSON
             except json.JSONDecodeError:
                 self.fail(f"{message} is not valid JSON")
-                def test_send_greetings_res_length(self):
-                    res = self.service.send_greetings(today_date=date(1985, 8, 8), format="XML")
-                    self.assertGreater(len(res), 0)
+                
+    def test_send_greetings_res_length(self):
+        res = self.service.send_greetings(today_date=date(1985, 8, 8), format="XML")
+        self.assertGreater(len(res), 0)
 
     def test_send_greetings_xml(self):
         res = self.service.send_greetings(today_date=date(1985, 8, 8), format="XML")

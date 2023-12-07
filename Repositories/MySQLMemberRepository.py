@@ -19,6 +19,14 @@ class MySQLMemberRepository(MemberRepository):
             database=os.getenv("MYSQL_DATABASE"),
         )
 
+        # Init members. This is for mocking the database
+        self.members = [
+            ("Robert", "Yen", "Male", date(1985, 8, 8), "robert.yen@linecorp.com"),
+            ("Cid", "Change", "Male", date(1990, 10, 10), "cid.change@linecorp.com"),
+            ("Miki", "Lai", "Female", date(1993, 4, 5), "miki.lai@linecorp.com"),
+            ("Sherry", "Chen", "Female", date(1993, 8, 8), "sherry.lai@linecorp.com"),
+            ("Peter", "Wang", "Male", date(1950, 12, 22), "peter.wang@linecorp.com"),
+        ]
         self.cursor = self.db.cursor()
 
     def drop_table(self):
@@ -41,14 +49,7 @@ class MySQLMemberRepository(MemberRepository):
                 """
         )
 
-        # Insert the members into the table
-        members = [
-            ("Robert", "Yen", "Male", date(1985, 8, 8), "robert.yen@linecorp.com"),
-            ("Cid", "Change", "Male", date(1990, 10, 10), "cid.change@linecorp.com"),
-            ("Miki", "Lai", "Female", date(1993, 4, 5), "miki.lai@linecorp.com"),
-            ("Sherry", "Chen", "Female", date(1993, 8, 8), "sherry.lai@linecorp.com"),
-            ("Peter", "Wang", "Male", date(1950, 12, 22), "peter.wang@linecorp.com"),
-        ]
+        members = self.members
 
         self.cursor.executemany(
             """
@@ -64,7 +65,7 @@ class MySQLMemberRepository(MemberRepository):
 
         pass
 
-    def get_all(self):
+    def get_all(self) -> List[Member]:
         self.cursor.execute("SELECT * FROM members")
         members = []
         for row in self.cursor.fetchall():
@@ -78,7 +79,7 @@ class MySQLMemberRepository(MemberRepository):
             members.append(member)
         return members
 
-    def get_members_with_tody_birthday(self, today_date: date = date.today()):
+    def get_members_with_tody_birthday(self, today_date: date = date.today())-> List[Member]:
         self.cursor.execute(
             "SELECT * FROM members WHERE MONTH(date_of_birth) = %s AND DAY(date_of_birth) = %s",
             (today_date.month, today_date.day),
@@ -94,5 +95,7 @@ class MySQLMemberRepository(MemberRepository):
             )
             members.append(member)
         return members
+    
+    # Delete the table when the object is destroyed. This is for mocking the database
     def __del__(self):
         self.drop_table()

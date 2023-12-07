@@ -6,6 +6,7 @@ from Repositories.Member import MemberRepository
 
 class MemoryMemberRepository(MemberRepository):
     def __init__(self):
+        # This is a fake repository, it should be replaced by a real one.
         self.members = [
             Member(
                 first_name="Robert",
@@ -46,13 +47,13 @@ class MemoryMemberRepository(MemberRepository):
     def init_table(self):
         pass
 
-    def add(self, member: Member):
+    def add(self, member: Member) :
         self.members.append(member)
 
-    def get_all(self):
+    def get_all(self) -> List[Member]:
         return self.members
 
-    def get_members_with_tody_birthday(self, today_date: date = date.today()):
+    def get_members_with_tody_birthday(self, today_date: date = date.today()) -> List[Member]:
         return [
             member
             for member in self.members

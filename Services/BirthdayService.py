@@ -2,6 +2,7 @@
 from Repositories.Member import MemberRepository
 from Generators import GreetingMessageGeneratorAbs
 from datetime import date
+from typing import List
 
 class BirthdayService:
     def __init__(self, repo: MemberRepository, generator: GreetingMessageGeneratorAbs):
@@ -9,7 +10,7 @@ class BirthdayService:
         self.repo.init_table()
         self.generator = generator
 
-    def send_greetings(self, today_date: date = date.today(), format: str = "JSON"):
+    def send_greetings(self, today_date: date = date.today(), format: str = "JSON") -> List[str]:
         members = self.repo.get_members_with_tody_birthday(today_date)
         greetings = []
         for member in members:
