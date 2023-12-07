@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from Services import BirthdayService
 from Generators import SimpleMessageGenerator, SimpleMessageWithFullNameGenerator, ElderPictureMessageGenerator, TailerMadeMessageGenerator
 from datetime import date, datetime
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/greetings/v1', methods=['POST'])
 def greetings():

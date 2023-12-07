@@ -2,9 +2,10 @@ import json
 from dicttoxml import dicttoxml
 
 class Greeting:
-    def __init__(self, title: str, content: str):
+    def __init__(self, title: str, content: str, picture_path: str = "None"):
         self.title = title
         self.content = content
+        self.picture_path = picture_path
 
     def to_json(self):
         return json.dumps(self.__dict__)
