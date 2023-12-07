@@ -17,8 +17,8 @@ def greetings():
     repo = get_repo(db_type)
     service = BirthdayService(repo, generator)
     greetings = service.send_greetings(date_obj,output_type)
-    greetings_string = '\n'.join(greetings)
-    return greetings_string
+     # greetings_string = '\n'.join(greetings)
+    return greetings
 
 @app.route('/greetings/v2', methods=['POST'])
 def greetings_v2():
@@ -30,8 +30,8 @@ def greetings_v2():
     repo = get_repo(db_type)
     service = BirthdayService(repo, generator)
     greetings = service.send_greetings(date_obj,output_type)
-    greetings_string = '\n'.join(greetings)
-    return greetings_string
+     # greetings_string = '\n'.join(greetings)
+    return greetings
 
 @app.route('/greetings/v3', methods=['POST'])
 def greetings_v3():
@@ -45,8 +45,8 @@ def greetings_v3():
     repo = get_repo(db_type)
     service = BirthdayService(repo, generator)
     greetings = service.send_greetings(date_obj,output_type)
-    greetings_string = '\n'.join(greetings)
-    return greetings_string
+     # greetings_string = '\n'.join(greetings)
+    return greetings
 
 @app.route('/greetings/v4', methods=['POST'])
 def greetings_v4():
@@ -65,8 +65,8 @@ def greetings_v4():
     repo = get_repo(db_type)
     service = BirthdayService(repo, generator)
     greetings = service.send_greetings(date_obj,output_type)
-    greetings_string = '\n'.join(greetings)
-    return greetings_string
+    # greetings_string = '\n'.join(greetings)
+    return greetings
 
 
 def get_repo(db_type):

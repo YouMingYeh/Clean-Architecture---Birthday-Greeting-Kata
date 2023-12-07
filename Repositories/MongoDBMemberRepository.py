@@ -14,6 +14,7 @@ class MongoDBMemberRepository(MemberRepository):
         self.db = self.client["CA"]
         self.collection = self.db["member"]
 
+        # Init members. This is for mocking the database
         self.members = [
             Member(
                 first_name="Robert",
@@ -67,7 +68,7 @@ class MongoDBMemberRepository(MemberRepository):
     def drop_table(self):
         self.collection.drop()
 
-    def get_all(self):
+    def get_all(self) -> List[Member]:
         members = self.collection.find()
         members = [
             Member(
@@ -99,6 +100,7 @@ class MongoDBMemberRepository(MemberRepository):
         ]
         return members_list
 
+    # Delete the table when the object is destroyed. This is for mocking the database
     def __del__(self):
         self.drop_table()
     
