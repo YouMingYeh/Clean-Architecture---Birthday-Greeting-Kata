@@ -1,4 +1,0 @@
-from .ElderPictureMessageGenerator import ElderPictureMessageGenerator
-from .SimpleMessageWithFullNameGenerator import SimpleMessageWithFullNameGenerator
-from .SimpleMessageGenerator import SimpleMessageGenerator
-from .TailerMadeMessageGenerator import TailerMadeMessageGenerator

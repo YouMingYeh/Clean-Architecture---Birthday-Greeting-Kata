@@ -1,33 +1,53 @@
+
 # Clean Architecture - Birthday Greeting Kata
 
-This project is an implementation of the Birthday Greeting Kata using clean architecture principles.
+## Getting Started
 
-## Installation Guide
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-1. Clone the repository:
+### Prerequisites
 
-```bash
-git clone https://github.com/yourusername/Clean-Architecture---Birthday-Greeting-Kata.git
-```
+- Node.js
+- npm
+- A local or remote database with necessary credentials. MongoDB and MySQL are supported.
+- Python
 
-2. Navigate into the project directory:
+### Installation
 
-```bash
-cd Clean-Architecture---Birthday-Greeting-Kata
-```
+#### Server
 
-3. Install the required Python packages:
+1. Navigate to the server directory:
 
-```bash
-pip install -r requirements.txt
-```
+   ```sh
+   cd server
+   ```
 
-## Unittest Guide
+2. Follow the instructions in the `README.md` file in the server directory.
 
-To run the unit tests for this project, use the following command:
+#### Client
 
-```bash
-python -m unittest discover
-```
+1. Navigate to the client directory:
 
-This command will discover and run all unittest test cases in the project.
+   ```sh
+   cd client
+   ```
+
+2. Install the necessary dependencies:
+
+   ```sh
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+### Configuration
+
+Please note that you need to provide the database credentials in a `.env` file. Refer to the `.env.example` file in the server directory for the required variables.
+
+## Contributing
+
+## License
